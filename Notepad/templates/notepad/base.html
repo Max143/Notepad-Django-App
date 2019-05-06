@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+          
+          
+          <title>
+            {% block title %}         {% endblock %}
+          </title>
+        
+    </head>
+
+<body>
+
+    {% block navbar %}
+               {% if user.is_authenticated %}
+                    <nav class="navbar navbar-inverse">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <a class="navbar-brand" href="{% url 'notepad' %}">Notepad</a>
+                          <a class="navbar-brand" href="{% url 'contactview' %}">Contact Us</a>
+                           <a class="navbar-brand" href="{% url 'userlistview' %}">Active Users</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                          <li class="active"><a href="#"></a></li>
+
+                          <li class="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notepad
+                              <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="{% url 'createview' %}">Create New Note</a></li>
+                                <li><a href="{% url 'notepadview' %}">My Notes</a></li>
+                                
+                              </ul>
+                          </li>
+                           <li class="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'profile' %}">Profile
+                              <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="{% url 'profile' %}">View Profile</a></li>
+                                <li><a href="{% url 'editprofile' %}">Edit Profile</a></li>
+                                
+                              </ul>
+                            
+
+                          </li>
+                        
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+                         
+               {% else %}
+                   <nav class="navbar navbar-inverse">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <a class="navbar-brand" href="{% url 'notepadview' %}">My Apps</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                          
+                          
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+               {% endif %}
+
+    {% endblock %}
+
+
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 well">
+                        {% block edit-del %}
+                        {% endblock %}
+                        <h2 class="text-primary">
+                            {% block heading %}
+                                My Apps : 
+                            {% endblock %}
+                        </h2>
+                        {% block meta %}
+                        {% endblock %}
+                        <hr style="border-top:1px dotted #000;"/>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                              <div class="alert alert-{{ message.tags }}">
+                                  {{ message }}
+                              </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+                        {% block body %}
+                        {% endblock body %}
+
+                        
+                </div>     
+                </div>
+
+    
+</body>
+
+</html>

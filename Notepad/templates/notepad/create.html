@@ -1,0 +1,28 @@
+{% extends 'Notepad/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+		Creata A New Note
+{% endblock title %}
+
+
+{% block heading %}
+		Create A New Note 
+{% endblock heading %}
+
+
+{% block body %}
+
+	  	<div></div>	
+	  		<form method="POST">
+	  			<h1>Create You New Note</h1>
+	  			<hr>
+	  			{% csrf_token %}
+	  			{{ form  |  crispy }}
+	  			<button type='submit' class= 'btn btn-success'>Save</button>.
+	  		</form>
+	  	</div>  
+ 		
+{% endblock body %}

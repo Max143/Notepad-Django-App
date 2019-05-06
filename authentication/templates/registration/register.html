@@ -1,0 +1,26 @@
+{% extends 'Notepad/base.html' %}
+{% load crispy_forms_tags %}
+ 
+
+
+
+{% block title %}
+		Create A New Account
+{% endblock title %}
+
+
+
+{% block body %}
+
+	<div>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form | crispy }}
+			<button type="submit" class="btn btn-info">Register Now</button>
+			
+		</form>
+		
+	</div>
+
+
+{% endblock body %}

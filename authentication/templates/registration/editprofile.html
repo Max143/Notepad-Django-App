@@ -1,0 +1,30 @@
+{% extends 'Notepad/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+		Edit Profile : {{ user.username }}
+{% endblock title %}
+
+
+{% block heading %}
+		Update Profile Form
+{% endblock heading %}
+
+
+
+{% block body %}
+
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ p_form | crispy }}
+			</fieldset>
+			<div class="form-group">
+			 	<button class="btn btn-outline-info" type=""submit>Update</button>
+			</div>
+		</form>
+
+
+
+{% endblock body %}

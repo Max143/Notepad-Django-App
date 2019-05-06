@@ -1,0 +1,22 @@
+{% extends 'notepad/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+		edit {{ note.id }}
+{% endblock title %}
+
+
+{% block body %}
+
+
+		<div class="jumbotron jumbotron-primary">
+			<form method='POST'>
+				{% csrf_token %}
+				{{ form | crispy }}
+				<button type="submit">Update</button>
+			</form>
+		</div>
+
+
+{% endblock body %}

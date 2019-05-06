@@ -1,0 +1,25 @@
+{% extends 'Notepad/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+		Note Id: {{ note.id }}		
+{% endblock title %}
+
+{% block heading %}
+		Update Your Note		
+{% endblock heading %}
+
+
+{% block body %}
+
+		<div style="padding: 10px;">
+			<h1>{{ note.title }}</h1>
+			
+			<hr>
+			<strong><h3>{{ note.description }}</h3></strong>
+
+		</div>
+
+
+{% endblock body %}

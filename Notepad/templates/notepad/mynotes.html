@@ -1,0 +1,36 @@
+{% extends 'Notepad/base.html' %}
+
+
+{% block title %}
+		My Notes
+{% endblock title %}
+
+
+{% block body %}
+
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+        	<th>Created</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+	    <tbody>
+	        {% for note in my_notes %}
+	        <tr>
+	        	<td>{{ note.timestamp }}</td>
+	            <td>{{ note.title }}</td>
+	            <td>{{ note.description }}</td>
+	            <td><center><a class="btn btn-sm btn-success" href="details/{{ note.id }}"><span class="glyphicon glyphicon-edit"></span>See Detail</a> <a class="btn btn-sm btn-warning" href="edit/{{ note.id }}"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a class="btn btn-sm btn-danger" href="{{ note.id }}/delete"><span class="glyphicon glyphicon-trash"></span>Delete</a></center></td>
+	        </tr>
+	        {% endfor %}
+	    </tbody>
+</table>
+
+
+
+
+
+{% endblock body %}
